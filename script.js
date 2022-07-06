@@ -17,8 +17,7 @@ const values = [
 ];
 let deck = [];
 let players = [];
-let card = document.querySelector(".cards");
-
+let cards = document.querySelector(".cards");
 //Game logic
 
 //Creates the deck of cards with two for loops then pushs the cards into the deck array
@@ -48,24 +47,20 @@ function shuffle(pile) {
 }
 
 //Render Deck
-function renderDeck(thing) {
+function renderDeck(deckOfCards) {
   document.getElementsByClassName("deck").innerHTML = "";
-  console.log(deck);
   for (let i = 0; i < deck.length; i++) {
-    console.log(thing);
-    let value = document.createElement("div");
+    let card = document.createElement("div");
     let suit = document.createElement("div");
-    value.className = "value";
+    card.className = "value";
     suit.className = "suit" + deck[i].suit;
-
-    value.innerHTML = deck[i].value;
-    value.appendChild(suit);
-    thing.appendChild(value);
+    card.innerHTML = deck[i].value;
+    deckOfCards.appendChild(card);
+    card.appendChild(suit);
   }
 }
-renderDeck(card);
 
-//Creates the player
+// Creates the player
 function createPlayers(num) {
   players = [];
   for (let i = 1; i <= num; i++) {
@@ -75,18 +70,7 @@ function createPlayers(num) {
   }
   return players;
 }
-//Creates the cards of the deck
-function createCards(card) {
-  const tops = document.querySelector(".cards");
-  tops.innerHTML = card.suit + "" + card.value;
-  return tops;
-}
 
-//Renders the cards
-function renderCards(card, players) {
-  const hand = document.getElementById("player-hand" + players);
-  hand.appendChild(createCards(card));
-}
 //Deals the hands to players
 function dealOut() {
   for (let i = 0; i < 2; i++) {
@@ -101,5 +85,4 @@ function dealOut() {
 function hitMe() {
   let card = deck.pop();
   players[i].hand.push(card);
-  renderCards(card, players[i]);
 }
