@@ -45,3 +45,13 @@ function shuffle(pile) {
   }
   return pile;
 }
+//Creates the player
+function createPlayers(num) {
+  players = [];
+  for (let i = 1; i <= num; i++) {
+    let deal = [];
+    let player = { name: "Player " + i, id: i, hand: deal };
+    players.push(player);
+  }
+  return players;
+}
