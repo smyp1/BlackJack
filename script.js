@@ -33,3 +33,15 @@ function createDeck(deck2) {
   }
   return deck2;
 }
+
+//Shuffles the deck so it isn't the same every time
+function shuffle(pile) {
+  for (let i = 0; i < 100; i++) {
+    let firstCut = Math.floor(Math.random() * pile.length);
+    let secondCut = Math.floor(Math.random() * pile.length);
+    let thirdCut = pile[firstCut];
+    pile[firstCut] = pile[secondCut];
+    pile[secondCut] = thirdCut;
+  }
+  return pile;
+}
