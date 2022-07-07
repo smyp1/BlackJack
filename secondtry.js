@@ -95,6 +95,17 @@ function renderPlayerDeck(deckOfCards) {
     card.appendChild(suit);
   }
 }
+function renderPlayerCards(deckOfCards) {
+  if (playerHand.length > 2) {
+    let card = document.createElement("div");
+    let suit = document.createElement("div");
+    card.className = "card-value";
+    suit.className = "suit: " + playerHand[length - 1].suit;
+    card.innerHTML = playerHand[length - 1].value;
+    deckOfCards.appendChild(card);
+    card.appendChild(suit);
+  }
+}
 
 //Renders the Dealers Deck
 function renderDealerDeck(deckOfCards) {
@@ -150,6 +161,12 @@ function renderPlayerHand() {
   renderPlayerDeck(player);
 }
 
+//Render player hand
+function renderPlayerHand2() {
+  let player = document.querySelector("#player-hand");
+  renderPlayerCards(player);
+}
+
 //Render dealer hand
 function renderDealerHand() {
   let dealer = document.querySelector("#dealer-hand");
@@ -190,7 +207,7 @@ function checkWin() {
     alert("You lose :( ");
   } else if (sum <= 21 && sum > sum2) {
     alert("You Win!");
-  } else if ((sum = sum2)) {
+  } else if (sum === sum2) {
     alert("you lose :(");
   }
 }
