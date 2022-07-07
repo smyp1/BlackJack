@@ -21,7 +21,7 @@ let deck = [];
 let cards = document.querySelector(".cards");
 let hitButton = document.querySelector("#hit");
 let stand = document.querySelector("#stand");
-let newTurn = document.querySelector("#new-hand");
+
 //Game logic
 
 //Checks for aces
@@ -252,7 +252,6 @@ hitButton.addEventListener("click", function hitMe() {
   dealPlayerHand();
   renderPlayerHand2();
   checkAce();
-  checkWin();
 });
 stand.addEventListener("click", function stand() {
   checkAce();
