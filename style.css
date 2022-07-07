@@ -5,7 +5,11 @@ body{
   background-size: cover;
 }
 header{
-  justify-content: center;
+text-align: center;
+font-size: 5rem;
+}
+h1{
+  text-align: center;
 }
 .deck{
 background: red;
@@ -22,15 +26,15 @@ background: red;
   background-color: aliceblue;
   border: 2px solid red;
   padding: 12px;
-  max-width: 10px;
+  width: 10px;
 }
 button{
   background-color: silver;
-  margin: auto;
+  margin:0 auto;
   
 }
 #start{
-  margin: auto;
+  margin: 0 auto;
 }
 input{
   background-color: red;
