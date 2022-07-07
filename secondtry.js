@@ -1,8 +1,8 @@
+//Global variables
 let playerHand = [];
 let dealerHand = [];
 const suits = ["spades", "clubs", "hearts", "diamonds"];
 const values = [
-  "A",
   "2",
   "3",
   "4",
@@ -15,17 +15,24 @@ const values = [
   "J",
   "Q",
   "K",
+  "A",
 ];
 let deck = [];
 let cards = document.querySelector(".cards");
+let hitButton = document.querySelector("#hit");
+let stand = document.querySelector("#stand");
+//Game logic
 
+//Creaates the deck
 function createDeck(deck2) {
   for (let i = 0; i < suits.length; i++) {
     for (let x = 0; x < values.length; x++) {
-      let weight = parseInt(values[i]);
-      if (values[i] == "J" || values[i] == "Q" || values[i] == "K") weight = 10;
-      if (values[i] == "A") weight == 11;
-      let card = { value: values[x], suit: suits[i] };
+      let sum = parseInt(values[x]);
+      if (values[x] == "J") sum = 10;
+      if (values[x] == "Q") sum = 10;
+      if (values[x] == "K") sum = 10;
+      if (values[x] == "A") sum = 11;
+      let card = { value: values[x], suit: suits[i], total: sum };
       deck2.push(card);
     }
   }
@@ -44,7 +51,7 @@ function shuffle(pile) {
   return pile;
 }
 
-//Renders the Deck
+//Renders the Players Deck
 function renderPlayerDeck(deckOfCards) {
   document.getElementsByClassName("deck").innerHTML = "";
   for (let i = 0; i < playerHand.length; i++) {
@@ -58,7 +65,7 @@ function renderPlayerDeck(deckOfCards) {
   }
 }
 
-//Renders the Deck
+//Renders the Dealers Deck
 function renderDealerDeck(deckOfCards) {
   document.getElementsByClassName("deck").innerHTML = "";
   for (let i = 0; i < dealerHand.length; i++) {
@@ -71,25 +78,38 @@ function renderDealerDeck(deckOfCards) {
     card.appendChild(suit);
   }
 }
+
+//Deals out cards to the dealer
 function dealDealerHand() {
   let card = deck.pop();
   dealerHand.push(card);
-  renderDealerDeck();
 }
 
+//Deals out cards to the player
 function dealPlayerHand() {
   let card = deck.pop();
   playerHand.push(card);
-  renderPlayerDeck();
 }
 
+// function getPlayerSum(string) {
+//   let sum = 0;
+//   for (let i = 0; i < playerHand.length; i++) {
+//     sum += playerHand.total;
+//   }
+//   playerHand.total = sum;
+//   return sum;
+// }
+
+//Starts the game
 function startGame() {
   createDeck(deck);
   shuffle(deck);
   dealDealerHand();
   dealDealerHand();
+  renderDealerHand();
   dealPlayerHand();
   dealPlayerHand();
+  renderPlayerHand();
 }
 startGame();
 
@@ -105,11 +125,31 @@ function renderDealerHand() {
   renderDealerDeck(dealer);
 }
 
+//Checks for win
+function checkWin() {
+  let sum = 0;
+  let sum2 = 0;
+  playerHand.forEach((playerHand) => {
+    sum += playerHand.total;
+  });
+  dealerHand.forEach((dealerHand) => {
+    sum2 += dealerHand.total;
+  });
+  console.log(sum);
+  if (sum > 21) {
+    alert("You lose :( ");
+  } else if (sum <= 21 && sum > sum2) {
+    alert("You Win!");
+  }
+}
 console.log(playerHand);
-
+console.log(dealerHand);
 // event listeners
-let hitButton = document.querySelector("#hit");
+
 hitButton.addEventListener("click", function hitMe() {
   dealPlayerHand();
+  renderPlayerHand();
   checkWin();
 });
+
+stand.addEventListener("click", checkWin);

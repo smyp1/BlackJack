@@ -103,6 +103,7 @@ function startGame() {
 }
 startGame();
 console.log(players[0].hand);
+
 // Render hand
 function renderHand(string, string) {
   let playerHand = document.querySelector(".hand [i]");

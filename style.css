@@ -4,5 +4,17 @@
 
 .deck{
 background: red;
-
+}
+#player-hand{
+  display: flex;
+  justify-content: flex-start;
+}
+#dealer-hand{
+  display: flex;
+  justify-content: flex-end;
+}
+.card-value{
+  background-color: aliceblue;
+  border: 1px solid red;
+  padding: 8px;
 }
