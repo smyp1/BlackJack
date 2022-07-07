@@ -1,7 +1,12 @@
-*{
-  background-color: green;
+body{
+  background-image: url(https://i.imgur.com/liopg2P.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
-
+header{
+  justify-content: center;
+}
 .deck{
 background: red;
 }
@@ -15,11 +20,17 @@ background: red;
 }
 .card-value{
   background-color: aliceblue;
-  border: 1px solid red;
-  padding: 8px;
+  border: 2px solid red;
+  padding: 12px;
+  max-width: 10px;
 }
 button{
   background-color: silver;
+  margin: auto;
+  
+}
+#start{
+  margin: auto;
 }
 input{
   background-color: red;
