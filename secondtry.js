@@ -23,6 +23,37 @@ let hitButton = document.querySelector("#hit");
 let stand = document.querySelector("#stand");
 //Game logic
 
+//Checks for aces
+function checkPlayerAce() {
+  sum = 0;
+  playerHand.forEach((playerHand) => {
+    sum += playerHand.total;
+  });
+  for (let i = 0; i < playerHand.length; i++) {
+    if (playerHand[i].value == "A" && sum > 21) {
+      playerHand[i].total = 1;
+    }
+  }
+}
+
+//Checks for aces
+function checkDealerAce() {
+  sum = 0;
+  dealerHand.forEach((dealerHand) => {
+    sum += dealerHand.total;
+  });
+  for (let i = 0; i < dealerHand.length; i++) {
+    if (dealerHand[i].value == "A" && sum > 21) {
+      dealerHand[i].total = 1;
+    }
+  }
+}
+//Checks for aces
+function checkAce() {
+  checkDealerAce();
+  checkPlayerAce();
+}
+
 //Creaates the deck
 function createDeck(deck2) {
   for (let i = 0; i < suits.length; i++) {
@@ -125,6 +156,22 @@ function renderDealerHand() {
   renderDealerDeck(dealer);
 }
 
+//Deals extra cards to the dealer
+function dealerNeedsAnother() {
+  let sum = 0;
+  let sum2 = 0;
+  playerHand.forEach((playerHand) => {
+    sum2 += playerHand.total;
+  });
+  dealerHand.forEach((dealerHand) => {
+    sum += dealerHand.total;
+  });
+  if (sum < 17 && sum < sum2) {
+    dealDealerHand();
+    renderDealerHand();
+  }
+  console.log(sum);
+}
 //Checks for win
 function checkWin() {
   let sum = 0;
@@ -135,21 +182,30 @@ function checkWin() {
   dealerHand.forEach((dealerHand) => {
     sum2 += dealerHand.total;
   });
+  dealerNeedsAnother();
+  dealerNeedsAnother();
   console.log(sum);
+  console.log(sum2);
   if (sum > 21) {
     alert("You lose :( ");
   } else if (sum <= 21 && sum > sum2) {
     alert("You Win!");
+  } else if ((sum = sum2)) {
+    alert("you lose :(");
   }
 }
 console.log(playerHand);
 console.log(dealerHand);
+
 // event listeners
 
 hitButton.addEventListener("click", function hitMe() {
   dealPlayerHand();
   renderPlayerHand();
+  checkAce();
   checkWin();
 });
-
-stand.addEventListener("click", checkWin);
+stand.addEventListener("click", function stand() {
+  checkAce();
+  checkWin();
+});
