@@ -96,6 +96,8 @@ function renderPlayerDeck(deckOfCards) {
     card.appendChild(suit);
   }
 }
+
+//Renders the drawn cards
 function renderPlayerCards(deckOfCards) {
   if (playerHand.length > 2) {
     let card = document.createElement("div");
@@ -107,6 +109,8 @@ function renderPlayerCards(deckOfCards) {
     card.appendChild(suit);
   }
 }
+
+//renders the drawn cards
 function renderDealerCards(deckOfCards) {
   if (dealerHand.length > 2) {
     let card = document.createElement("div");
@@ -175,6 +179,11 @@ function renderDealerHand() {
   renderDealerDeck(dealer);
 }
 
+//Render dealer hand
+function renderDealerHand2() {
+  let dealer = document.querySelector("#dealer-hand");
+  renderDealerCards(dealer);
+}
 //Deals extra cards to the dealer
 function dealerNeedsAnother() {
   let sum = 0;
@@ -187,7 +196,7 @@ function dealerNeedsAnother() {
   });
   if (sum < 17 && sum < sum2) {
     dealDealerHand();
-    renderDealerHand();
+    renderDealerHand2();
   }
   console.log(sum);
 }
