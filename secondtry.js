@@ -245,6 +245,17 @@ function checkWin() {
   }
 }
 
+//Check for bust
+function bust() {
+  let sum = 0;
+  playerHand.forEach((playerHand) => {
+    sum += playerHand.total;
+  });
+  if (sum > 21) {
+    alert("Bust");
+  }
+}
+
 console.log(playerHand);
 console.log(dealerHand);
 startGame();
@@ -255,6 +266,7 @@ hitButton.addEventListener("click", function hitMe() {
   dealPlayerHand();
   renderPlayerHand2();
   checkAce();
+  bust();
 });
 
 stand.addEventListener("click", function stand() {
