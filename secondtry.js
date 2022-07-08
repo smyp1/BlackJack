@@ -1,4 +1,5 @@
 //Global variables
+
 let playerHand = [];
 let dealerHand = [];
 const suits = ["spades", "clubs", "hearts", "diamonds"];
@@ -24,7 +25,7 @@ let stand = document.querySelector("#stand");
 
 //Game logic
 
-//Checks for aces
+//Checks for if the player has any aces and changes the value if applicable
 function checkPlayerAce() {
   sum = 0;
   playerHand.forEach((playerHand) => {
@@ -37,7 +38,7 @@ function checkPlayerAce() {
   }
 }
 
-//Checks for aces
+//Checks for if the dealer has any aces and changes the value if applicable
 function checkDealerAce() {
   sum = 0;
   dealerHand.forEach((dealerHand) => {
@@ -163,25 +164,25 @@ function startGame() {
   checkForWin();
 }
 
-//Render player hand
+//Renders the initial players hand
 function renderPlayerHand() {
   let player = document.querySelector("#player-hand");
   renderPlayerDeck(player);
 }
 
-//Render player hand
+//Renders the added cards to the players hand
 function renderPlayerHand2() {
   let player = document.querySelector("#player-hand");
   renderPlayerCards(player);
 }
 
-//Render dealer hand
+//Renders the initial dealers hand
 function renderDealerHand() {
   let dealer = document.querySelector("#dealer-hand");
   renderDealerDeck(dealer);
 }
 
-//Render dealer hand
+//Renders the added cards to the dealers hand
 function renderDealerHand2() {
   let dealer = document.querySelector("#dealer-hand");
   renderDealerCards(dealer);
@@ -204,7 +205,7 @@ function dealerNeedsAnother() {
   console.log(sum);
 }
 
-//Checks for win at the start of the game
+//Checks for a natural at the start of the game
 function checkForWin() {
   let sum = 0;
   let sum2 = 0;
@@ -215,13 +216,13 @@ function checkForWin() {
     sum2 += dealerHand.total;
   });
   if (sum == 21 && sum2 != 21) {
-    alert("You win!");
+    alert("21 winner!");
   } else if (sum2 == 21) {
-    alert("You lose:(");
+    alert("You lose :(");
   }
 }
 
-//Checks for win
+//Checks for who won and hits for the dealer if applicable
 function checkWin() {
   let sum = 0;
   let sum2 = 0;
@@ -255,6 +256,7 @@ hitButton.addEventListener("click", function hitMe() {
   renderPlayerHand2();
   checkAce();
 });
+
 stand.addEventListener("click", function stand() {
   checkAce();
   checkWin();

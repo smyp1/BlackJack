@@ -5,7 +5,7 @@ body{
   background-size: cover;
   color: #000;
   font-family: 'Noto Serif', serif;
-  font-weight: absolute;
+  
 }
 
 header{
@@ -49,11 +49,20 @@ h1{
 button{
   background-color: silver;
   margin:0 auto;
-  
+  border-radius: 20%;
+  width: 75px;
+  height: 35px;
+  font-style: italic;
+  font-size: 1rem;
 }
 #start{
   margin: 0 auto;
 }
 input{
   background-color: red;
+  border-radius: 20%;
+  width: 75px;
+  height: 35px;
+  font-style: italic;
+  font-size: 13px;
 }
