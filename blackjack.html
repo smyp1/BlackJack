@@ -4,23 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <script defer src="blackjack.js"></script>
   <title>Document</title>
 </head>
 <body>
   <section class="play-area">
     <div class="deck">
-      <h1>This is the deck</h1>
       <div class="cards">
         
       </div>
     </div>
-  <div id="players-hand"></div>
+  <div id="player-hand"></div>
+  <div id="dealer-hand"></div>
   <button id="hit">Hit</button>
-  <button id="stand">Stand</button>    
+  <button id="stand">Stand</button>
+  <input type="button" value="New Hand" onClick="document.location.reload(true)"> 
+  <button id="rules" onclick="document.location='index.html'">Rules</button>
+</section>
+  <section class="score-board">
+
   </section>
-  <section class="score-board"></section>
   <div></div>
 </body>
 </html>
