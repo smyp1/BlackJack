@@ -49,6 +49,7 @@ function checkDealerAce() {
     }
   }
 }
+
 //Checks for aces
 function checkAce() {
   checkDealerAce();
@@ -90,7 +91,7 @@ function renderPlayerDeck(deckOfCards) {
     let card = document.createElement("div");
     let suit = document.createElement("div");
     card.className = "card-value";
-    suit.className = "suit: " + playerHand[i].suit;
+    suit.className = "suit_" + playerHand[i].suit;
     card.innerHTML = playerHand[i].value;
     deckOfCards.appendChild(card);
     card.appendChild(suit);
@@ -103,7 +104,7 @@ function renderPlayerCards(deckOfCards) {
     let card = document.createElement("div");
     let suit = document.createElement("div");
     card.className = "card-value";
-    suit.className = "suit: " + playerHand.suit;
+    suit.className = "suit_" + playerHand[playerHand.length - 1].suit;
     card.innerHTML = playerHand[playerHand.length - 1].value;
     deckOfCards.appendChild(card);
     card.appendChild(suit);
@@ -116,12 +117,13 @@ function renderDealerCards(deckOfCards) {
     let card = document.createElement("div");
     let suit = document.createElement("div");
     card.className = "card-value";
-    suit.className = "suit: " + dealerHand.suit;
+    suit.className = "suit_" + dealerHand[dealerHand.length - 1].suit;
     card.innerHTML = dealerHand[dealerHand.length - 1].value;
     deckOfCards.appendChild(card);
     card.appendChild(suit);
   }
 }
+
 //Renders the Dealers Deck
 function renderDealerDeck(deckOfCards) {
   document.getElementsByClassName("deck").innerHTML = "";
@@ -129,7 +131,7 @@ function renderDealerDeck(deckOfCards) {
     let card = document.createElement("div");
     let suit = document.createElement("div");
     card.className = "card-value";
-    suit.className = "suit: " + dealerHand[i].suit;
+    suit.className = "suit_" + dealerHand[i].suit;
     card.innerHTML = dealerHand[i].value;
     deckOfCards.appendChild(card);
     card.appendChild(suit);
@@ -184,6 +186,7 @@ function renderDealerHand2() {
   let dealer = document.querySelector("#dealer-hand");
   renderDealerCards(dealer);
 }
+
 //Deals extra cards to the dealer
 function dealerNeedsAnother() {
   let sum = 0;
@@ -217,6 +220,7 @@ function checkForWin() {
     alert("You lose:(");
   }
 }
+
 //Checks for win
 function checkWin() {
   let sum = 0;
@@ -245,9 +249,7 @@ console.log(dealerHand);
 startGame();
 
 // event listeners
-function renew() {
-  window.location.reload(false);
-}
+
 hitButton.addEventListener("click", function hitMe() {
   dealPlayerHand();
   renderPlayerHand2();

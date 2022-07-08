@@ -4,30 +4,45 @@ body{
   background-attachment: fixed;
   background-size: cover;
 }
+
 header{
 text-align: center;
 font-size: 5rem;
 }
+
 h1{
   text-align: center;
 }
-.deck{
-background: red;
-}
+
 #player-hand{
   display: flex;
   justify-content: flex-start;
 }
+
 #dealer-hand{
   display: flex;
   justify-content: flex-end;
 }
+
 .card-value{
   background-color: aliceblue;
   border: 2px solid red;
-  padding: 12px;
-  width: 10px;
+  padding: 10px;
+  line-height: 65px;
+  width: 60px;
+  height: 90px;
+  display: inline-block;
+  text-align: center;
+  font-size: larger;
+  font-weight: 600;
+  background-image: url(https://b.rgbimg.com/users/w/we/weirdvis/600/pI8F6Ow.jpg);
+  background-repeat: repeat;
+  background-attachment: local;
+  background-size: contain;
+  margin: 2px;
+  border-radius: 6%;
 }
+
 button{
   background-color: silver;
   margin:0 auto;
